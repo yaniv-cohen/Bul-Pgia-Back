@@ -2,6 +2,8 @@ import uuid
 from flask import Flask
 from flask_cors import CORS
 import game
+import time
+from flask import request
 from getNextPossibleResults import getNextPossibleResults
 app = Flask(__name__)
 CORS(app)
@@ -20,7 +22,7 @@ myGames = {}
 def createNewGame(slots, letter_Count):
     id = str(uuid.uuid1())
     print('making new game : ' + id)
-    myGames[id] = game.Game(int(slots))
+    myGames[id] = game.Game(int(slots), int(letter_Count))
     print(len(myGames) )
     return (id)
 
@@ -49,13 +51,4 @@ def scoreboard():
     return "<p>Scoreboard !</p>"
 @app.route('/')
 def hello_world():
-    return "<p>Invalid url</p>"
-
-# if __name__ == "__main__":
-#     from waitress import serve
-#     serve(app, host="0.0.0.0", port=8080)
-
-# if app.config['LOG_WITH_GUNICORN']:
-#     gunicorn_error_logger = logging.getLogger('gunicorn.error')
-#     app.logger.handlers.extend(gunicorn_error_logger.handlers)
-#     app.logger.setLevel(logging.DEBUG)
+    return "<p>Hello, World !</p>"
