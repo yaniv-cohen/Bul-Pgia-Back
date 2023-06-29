@@ -2,7 +2,6 @@ import uuid
 from flask import Flask
 from flask_cors import CORS
 import game
-import time
 from flask import request
 from getNextPossibleResults import getNextPossibleResults
 app = Flask(__name__)
@@ -10,13 +9,6 @@ CORS(app)
 
 wordLength= 4
 myGames = {}
-# fisrtGameId = "one"
-# hi=game.Game(wordLength)
-# myGames[hi.game_id] = hi
-# base_game = myGames[hi.game_id]
-# base_game.current_guess = ''
-# print(myGames[hi.game_id].game_id)
-# print("started game in server,  id: "+ base_game.game_id )
 
 @app.route("/createNewGame/<slots>/<letter_Count>")
 def createNewGame(slots, letter_Count):
